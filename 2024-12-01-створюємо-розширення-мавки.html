@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="xdocs-url-prefix" content="./">
+
+  <meta name="description" content="Мавку, ще з часів JavaScript версії, можна розширювати. Раніше, очевидно, за допомогою JavaScript. На
+щастя, Мавка вже відійша від JS, тому сьогодні розширюватимемо за допомогою Цілі.">
+
+  <title>Створюємо розширення Мавки | Часопис Мавки</title>
+
+  <link rel="icon" type="image/png" href="./ресурси/тема/часопис.лого.png" />
+  <link rel="icon" sizes="any" type="image/svg+xml" href="./ресурси/тема/часопис.лого.svg">
+
+  <link rel="stylesheet" href="./ресурси/ядро/highlight-atom-one-dark.css">
+<link rel="stylesheet" href="./ресурси/тема/тема.css">
+</head>
+<body>
+
+<div class="XDocsPage">
+  <div class="XDocsPageNavigation" data-is-navigation="true" data-hidden-on-mobile="true"><div class="XDocsPageNavigationHead">
+  <a href="./index.html" class="XDocsPageNavigationHeadLogo">
+    <img src="./ресурси/тема/часопис.лого.svg" alt="">
+  </a>
+</div>
+<div class="XDocsPageNavigationSearch">
+  <button>Пошук... (Alt + /)</button>
+  <iframe src="./ресурси/search.html"></iframe>
+</div>
+<a
+  href="./index.html"
+  class="XDocsPageNavigationItem "
+  data-navigation-item="Вступ"
+>
+  Вступ
+</a>
+<button
+  class="XDocsPageNavigationItem"
+  data-navigation-item="Грудень 2024"
+  data-navigation-item-expanded="true">
+  Грудень 2024
+  <span class="XDocsPageNavigationItemArrow">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+      <path d="M480-357.85 253.85-584 296-626.15l184 184 184-184L706.15-584 480-357.85Z"></path>
+    </svg>
+  </span>
+</button>
+<div
+  class="XDocsPageNavigationSubmenu"
+  data-navigation-submenu="Грудень 2024"
+  data-navigation-submenu-shown="true"
+>
+  <a
+  href="./2024-12-01-створюємо-розширення-мавки.html"
+  class="XDocsPageNavigationSubmenuItem active"
+  data-navigation-item="Створюємо розширення Мавки"
+>
+  Створюємо розширення Мавки
+</a>
+</div>
+<button
+  class="XDocsPageNavigationItem"
+  data-navigation-item="Вересень 2024"
+  data-navigation-item-expanded="false">
+  Вересень 2024
+  <span class="XDocsPageNavigationItemArrow">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+      <path d="M480-357.85 253.85-584 296-626.15l184 184 184-184L706.15-584 480-357.85Z"></path>
+    </svg>
+  </span>
+</button>
+<div
+  class="XDocsPageNavigationSubmenu"
+  data-navigation-submenu="Вересень 2024"
+  data-navigation-submenu-shown="false"
+>
+  <a
+  href="./2024-09-08-реформа.html"
+  class="XDocsPageNavigationSubmenuItem "
+  data-navigation-item="У Мавки реформа!"
+>
+  У Мавки реформа!
+</a>
+</div>
+<div class="XDocsPageNavigationFooterWrapper">
+  <div class="XDocsPageNavigationFooter">
+    <a href="https://мавка.укр"><img src="./ресурси/тема/мавка.лого.svg" alt=""></a>
+    Часопис<a href="https://мавка.укр" style="all: unset; cursor: pointer; margin-right: 0.4ch; margin-left: 0.4ch;">Мавки</a>
+  </div>
+</div>
+</div>
+  <button data-is-mobile-navigation-toggle="true" class="XDocsPageMobileNavigationToggle">
+    <svg data-menu-icon="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+      <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+    </svg>
+    <svg data-close-icon="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"
+         fill="currentColor">
+      <path
+        d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+    </svg>
+  </button>
+  <div class="XDocsPageContent">
+    
+    <h1>Як створити просте розширення Мавки?</h1>
+<p><subject>Мавку</subject>, ще з часів JavaScript версії, можна розширювати. Раніше, очевидно, за допомогою JavaScript. На
+щастя, <subject>Мавка</subject> вже відійша від JS, тому сьогодні розширюватимемо за допомогою <subject>Цілі</subject>.</p>
+<p>У цьому дописі я покажу як просто можна виконувати код на <subject>Цілі</subject> з <subject>Мавки</subject>. Але навіть
+більше — код на C++ через <subject>Ціль</subject> з <subject>Мавки</subject>.</p>
+<p>Отож, поїхали. Для цього нам будуть треба останні версії <subject>Мавки</subject>, <subject>Цілі</subject> та Clang++.
+На момент написання
+цього допису в мене
+версія <subject><a href="https://xn--80ae5bu9f.xn--80aaf6ah.xn--j1amh/%D0%B2%D0%B8%D0%BF%D1%83%D1%81%D0%BA-%D0%BC%D0%B0%D0%B2%D0%BA%D0%B8-0.112.0.html">Мавки 0.112.0</a></subject>,
+версія <subject><a href="https://xn--80ae5bu9f.xn--k1avt2b.xn--j1amh/%D0%B2%D0%B8%D0%BF%D1%83%D1%81%D0%BA-%D1%86%D1%96%D0%BB%D1%96-0.29.0.html">Цілі 0.29.0</a></subject>
+та Clang++ 18.</p>
+<p>Також треба завантажити файл <code>РМв1.в</code>
+(Наприклад з <a href="https://github.com/mavka-ukr/mavka/blob/main/%D0%A0%D0%9C%D0%B21/%D0%A0%D0%9C%D0%B21.%D0%B2">GitHub-у</a>).</p>
+<p>Структура директорії проекту буде така:</p>
+<pre><div class="XDocsCodeWrapper"><code class="hljs">розширення_мавки_сума/
+├─ РМв1.в
+├─ sum_mavka_extension.cpp
+├─ розширення_мавки_сума.ll
+├─ розширення_мавки_сума.so
+├─ розширення_мавки_сума.ц
+└─ тест_розширення_сума.м
+</code></div></pre>
+<p>Створюємо файл <code>sum_mavka_extension.cpp</code> з наступним вмістом:</p>
+<pre><div class="XDocsCodeWrapper"><code class="hljs"><span class="hljs-keyword">extern</span> <span class="hljs-string">&quot;C&quot;</span> <span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">mavka_extension_sum</span><span class="hljs-params">(<span class="hljs-type">double</span> a, <span class="hljs-type">double</span> b)</span> </span>{
+  <span class="hljs-keyword">return</span> a + b;
+}
+</code></div></pre>
+<p>Створюємо файл <code>розширення_мавки_сума.ц</code> з наступним вмістом:</p>
+<pre><div class="XDocsCodeWrapper"><code class="hljs">взяти визначення РМв1;
+
+зовнішня дія mavka_extension_sum(a: double, b: double): double;
+
+дія нативна_дія_сума(обʼєкт_нативної_дії: адреса&lt;РМв1::Обʼєкт&gt;, Р: адреса&lt;РМв1::Розширення&gt;, обʼєкт_я: адреса&lt;РМв1::Обʼєкт&gt;, кількість_аргументів: позитивне, аргументи: адреса&lt;адреса&lt;РМв1::Обʼєкт&gt;&gt;, іменовані_аргументи: адреса, дані: адреса): РМв1::Результат {
+  якщо кількість_аргументів &gt; 1 {
+    ціль обʼєкт_аргумента_1 = аргументи[0];
+    ціль обʼєкт_аргумента_2 = аргументи[1];
+    ціль а = РМв1::отримати_значення_числа(обʼєкт_аргумента_1, Р);
+    ціль б = РМв1::отримати_значення_числа(обʼєкт_аргумента_2, Р);
+    ціль результат = mavka_extension_sum(а, б);
+    вернути РМв1::успіх(Р, РМв1::створити_число(Р, результат));
+  }
+  вернути РМв1::падіння(Р, РМв1::створити_текст_з_Ю8(Р, ю8&quot;Недостатньо аргументів&quot;));
+}
+
+зовнішня дія завантажити_РМв1(Р: адреса&lt;РМв1::Розширення&gt;): РМв1::Результат {
+  ціль обʼєкт_нативної_дії_сума = РМв1::створити_нативну_дію(Р, РМв1::назва_з_Ю8(Р, ю8&quot;сума&quot;), нативна_дія_сума, пусто, пусто);
+  вернути РМв1::падіння(Р, обʼєкт_нативної_дії_сума);
+}
+</code></div></pre>
+<p>Компілюємо shared object <code>розширення_мавки_сума.so</code> за допомогою наступних команд:</p>
+<pre><div class="XDocsCodeWrapper"><code class="hljs">ціль розширення_мавки_сума.ll скомпілювати розширення_мавки_сума.ц
+</code></div></pre>
+<pre><div class="XDocsCodeWrapper"><code class="hljs">clang++ -shared -o розширення_мавки_сума.so розширення_мавки_сума.ll sum_mavka_extension.cpp
+</code></div></pre>
+<p>Створюємо модуль <subject>Мавки</subject> <code>тест_розширення_сума.м</code>:</p>
+<pre><div class="XDocsCodeWrapper"><code class="hljs"><span class="hljs-keyword">взяти</span> <span class="hljs-keyword">біб</span> мавка
+
+сума = мавка.<span class="hljs-title function_">з</span><span class="hljs-title function_">авантажити_РМв1</span>(ю<span class="hljs-string">&quot;./розширення_мавки_сума.so&quot;</span>)
+<span class="hljs-title function_">д</span><span class="hljs-title function_">рук</span>(<span class="hljs-title function_">с</span><span class="hljs-title function_">ума</span>(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>))
+</code></div></pre>
+<p>Пробуємо:</p>
+<pre><div class="XDocsCodeWrapper"><code class="hljs">мавка тест_розширення_сума.м
+</code></div></pre>
+<p>Має надрукувати <code>4</code>.</p>
+<p>Отож, як видно, виконувати нативний код на <subject>Цілі</subject> чи C++ з <subject>Мавки</subject> дуже просто.
+Головне розібратись з файлом <code>РМв1.в</code> та розуміти <subject>Ціль</subject>.</p>
+<hr>
+<p><em>Написав <a href="https://xn--90afr.xn--j1amh">Давид</a>. Опубліковано 01.12.2024.</em></p>
+
+    <div class="XDocsPageContentBcFw">
+      <a data-is-prev="true" href="./index.html">Відступ</a>
+      <a data-is-next="true" href="./2024-09-08-реформа.html">Наступ</a >
+    </div>
+  </div>
+</div>
+
+<script src="./ресурси/ядро/ядро.js"></script>
+<script src="./ресурси/тема/тема.js"></script>
+
+</body>
+</html>
