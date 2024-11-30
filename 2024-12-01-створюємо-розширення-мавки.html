@@ -132,25 +132,25 @@
 }
 </code></div></pre>
 <p>Створюємо файл <code>розширення_мавки_сума.ц</code> з наступним вмістом:</p>
-<pre><div class="XDocsCodeWrapper"><code class="hljs">взяти визначення РМв1;
+<pre><div class="XDocsCodeWrapper"><code class="hljs"><span class="hljs-keyword">взяти</span> <span class="hljs-keyword">визначення</span> РМв1;
 
-зовнішня дія mavka_extension_sum(a: double, b: double): double;
+<span class="hljs-keyword">зовнішня</span> <span class="hljs-keyword">дія</span> <span class="hljs-title function_">m</span><span class="hljs-title function_">avka_extension_sum</span>(a: <span class="hljs-type">double</span>, b: <span class="hljs-type">double</span>): <span class="hljs-type">double</span>;
 
-дія нативна_дія_сума(обʼєкт_нативної_дії: адреса&lt;РМв1::Обʼєкт&gt;, Р: адреса&lt;РМв1::Розширення&gt;, обʼєкт_я: адреса&lt;РМв1::Обʼєкт&gt;, кількість_аргументів: позитивне, аргументи: адреса&lt;адреса&lt;РМв1::Обʼєкт&gt;&gt;, іменовані_аргументи: адреса, дані: адреса): РМв1::Результат {
-  якщо кількість_аргументів &gt; 1 {
-    ціль обʼєкт_аргумента_1 = аргументи[0];
-    ціль обʼєкт_аргумента_2 = аргументи[1];
-    ціль а = РМв1::отримати_значення_числа(обʼєкт_аргумента_1, Р);
-    ціль б = РМв1::отримати_значення_числа(обʼєкт_аргумента_2, Р);
-    ціль результат = mavka_extension_sum(а, б);
-    вернути РМв1::успіх(Р, РМв1::створити_число(Р, результат));
+<span class="hljs-keyword">дія</span> <span class="hljs-title function_">н</span><span class="hljs-title function_">ативна_дія_сума</span>(обʼєкт_нативної_дії: <span class="hljs-type">адреса</span>&lt;РМв1::Обʼєкт&gt;, Р: <span class="hljs-type">адреса</span>&lt;РМв1::Розширення&gt;, обʼєкт_я: <span class="hljs-type">адреса</span>&lt;РМв1::Обʼєкт&gt;, кількість_аргументів: <span class="hljs-type">позитивне</span>, аргументи: <span class="hljs-type">адреса</span>&lt;<span class="hljs-type">адреса</span>&lt;РМв1::Обʼєкт&gt;&gt;, іменовані_аргументи: <span class="hljs-type">адреса</span>, дані: <span class="hljs-type">адреса</span>): РМв1::Результат {
+  <span class="hljs-keyword">якщо</span> кількість_аргументів &gt; 1 {
+    <span class="hljs-keyword">ціль</span> обʼєкт_аргумента_1 = аргументи[0];
+    <span class="hljs-keyword">ціль</span> обʼєкт_аргумента_2 = аргументи[1];
+    <span class="hljs-keyword">ціль</span> а = РМв1::<span class="hljs-built_in">о</span><span class="hljs-built_in">тримати_значення_числа</span>(обʼєкт_аргумента_1, Р);
+    <span class="hljs-keyword">ціль</span> б = РМв1::<span class="hljs-built_in">о</span><span class="hljs-built_in">тримати_значення_числа</span>(обʼєкт_аргумента_2, Р);
+    <span class="hljs-keyword">ціль</span> результат = <span class="hljs-built_in">m</span><span class="hljs-built_in">avka_extension_sum</span>(а, б);
+    <span class="hljs-keyword">вернути</span> РМв1::<span class="hljs-built_in">у</span><span class="hljs-built_in">спіх</span>(Р, РМв1::<span class="hljs-built_in">с</span><span class="hljs-built_in">творити_число</span>(Р, результат));
   }
-  вернути РМв1::падіння(Р, РМв1::створити_текст_з_Ю8(Р, ю8&quot;Недостатньо аргументів&quot;));
+  <span class="hljs-keyword">вернути</span> РМв1::<span class="hljs-built_in">п</span><span class="hljs-built_in">адіння</span>(Р, РМв1::<span class="hljs-built_in">с</span><span class="hljs-built_in">творити_текст_з_Ю8</span>(Р, ю8<span class="hljs-string">&quot;Недостатньо аргументів&quot;</span>));
 }
 
-зовнішня дія завантажити_РМв1(Р: адреса&lt;РМв1::Розширення&gt;): РМв1::Результат {
-  ціль обʼєкт_нативної_дії_сума = РМв1::створити_нативну_дію(Р, РМв1::назва_з_Ю8(Р, ю8&quot;сума&quot;), нативна_дія_сума, пусто, пусто);
-  вернути РМв1::падіння(Р, обʼєкт_нативної_дії_сума);
+<span class="hljs-keyword">зовнішня</span> <span class="hljs-keyword">дія</span> <span class="hljs-title function_">з</span><span class="hljs-title function_">авантажити_РМв1</span>(Р: <span class="hljs-type">адреса</span>&lt;РМв1::Розширення&gt;): РМв1::Результат {
+  <span class="hljs-keyword">ціль</span> обʼєкт_нативної_дії_сума = РМв1::<span class="hljs-built_in">с</span><span class="hljs-built_in">творити_нативну_дію</span>(Р, РМв1::<span class="hljs-built_in">н</span><span class="hljs-built_in">азва_з_Ю8</span>(Р, ю8<span class="hljs-string">&quot;сума&quot;</span>), нативна_дія_сума, <span class="hljs-literal">пусто</span>, <span class="hljs-literal">пусто</span>);
+  <span class="hljs-keyword">вернути</span> РМв1::<span class="hljs-built_in">п</span><span class="hljs-built_in">адіння</span>(Р, обʼєкт_нативної_дії_сума);
 }
 </code></div></pre>
 <p>Компілюємо shared object <code>розширення_мавки_сума.so</code> за допомогою наступних команд:</p>
