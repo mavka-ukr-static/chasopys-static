@@ -7,10 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="xdocs-url-prefix" content="./">
 
-  <meta name="description" content="Часопис Мавки зберігає різну текстову інформацію, що стосується Мавки. Новини,
-оновлення, інструкції, деталі, цікавинки й т.д.">
+  <meta name="description" content="Теорія Мавки не просто красива. Теорія Мавки цікавий інструмент для опису різних
+концептів програмування.">
 
-  <title>Часопис Мавки</title>
+  <title>Теорія Мавки і керування памʼятю | Часопис Мавки</title>
 
   <link rel="icon" type="image/png" href="./ресурси/тема/часопис.лого.png" />
   <link rel="icon" sizes="any" type="image/svg+xml" href="./ресурси/тема/часопис.лого.svg">
@@ -32,7 +32,7 @@
 </div>
 <a
   href="./index.html"
-  class="XDocsPageNavigationItem active"
+  class="XDocsPageNavigationItem "
   data-navigation-item="Вступ"
 >
   Вступ
@@ -40,7 +40,7 @@
 <button
   class="XDocsPageNavigationItem"
   data-navigation-item="Грудень 2024"
-  data-navigation-item-expanded="false">
+  data-navigation-item-expanded="true">
   Грудень 2024
   <span class="XDocsPageNavigationItemArrow">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
@@ -51,11 +51,11 @@
 <div
   class="XDocsPageNavigationSubmenu"
   data-navigation-submenu="Грудень 2024"
-  data-navigation-submenu-shown="false"
+  data-navigation-submenu-shown="true"
 >
   <a
   href="./2024-12-04-керування-памʼятю-і-теорія-мавки.html"
-  class="XDocsPageNavigationSubmenuItem "
+  class="XDocsPageNavigationSubmenuItem active"
   data-navigation-item="Теорія Мавки і керування памʼятю"
 >
   Теорія Мавки і керування памʼятю
@@ -111,14 +111,37 @@
   </button>
   <div class="XDocsPageContent">
     
-    <h1>Часопис</h1>
-<p><subject>Часопис Мавки</subject> зберігає різну текстову інформацію, що стосується <subject>Мавки</subject>. Новини,
-оновлення, інструкції, деталі, цікавинки й т.д.</p>
-<p>Додати свій допис можна <a href="https://github.com/mavka-ukr/chasopys">тут</a>.</p>
+    <h1>Теорія Мавки і керування памʼятю</h1>
+<p><subject>Теорія Мавки</subject> не просто красива. <subject>Теорія Мавки</subject> цікавий інструмент для опису різних
+концептів програмування.</p>
+<p>Ось, наприклад, пояснення різних способів керування памʼятю використовуючи <subject>Теорію Мавки</subject>:</p>
+<ol>
+<li>
+<p>Обʼєкт існує доти доки є субʼєктом хоч одного середовища. Або іншими словами, коли жоден субʼєкт не вказує на якийсь
+обʼєкт, то цей обʼєкт рахується як непотрібний і утилізатор може сміло його звільняти. Це як в <subject>
+Мавці</subject> чи JavaScript.</p>
+</li>
+<li>
+<p>Обʼєкт існує незалежно від того, в скількох середовищах він є субʼєктом. Програміст має самостійно вказувати коли
+звільняти обʼєкт і впевнитись що жоден субʼєкт не вказує на цей обʼєкт. Це як в <subject>Цілі</subject> чи C під час
+використання
+malloc.</p>
+</li>
+<li>
+<p>На один обʼєкт лише один субʼєкт. Програміст має вручну вказувати переміщення обʼєкта в середовищі чи між
+середовищами. Якщо програміст не перемістить обʼєкт, то він звільниться разом із видаленням субʼєкта. Щось схоже є в
+Rust.</p>
+</li>
+</ol>
+<blockquote>
+<p>Властивість обʼєкта теж є субʼєктом, відповідно обʼєкт можна вважати середовищем, як і середовище обʼєктом</p>
+</blockquote>
+<hr>
+<p><em>Написав <a href="https://xn--90afr.xn--j1amh">Давид</a>. Опубліковано 04.12.2024.</em></p>
 
     <div class="XDocsPageContentBcFw">
-      
-      <a data-is-next="true" href="./2024-12-04-керування-памʼятю-і-теорія-мавки.html">Наступ</a >
+      <a data-is-prev="true" href="./index.html">Відступ</a>
+      <a data-is-next="true" href="./2024-12-01-створюємо-розширення-мавки.html">Наступ</a >
     </div>
   </div>
 </div>
