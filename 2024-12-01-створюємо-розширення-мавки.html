@@ -143,16 +143,43 @@
 
 <span class="hljs-keyword">зовнішня</span> <span class="hljs-keyword">дія</span> <span class="hljs-title function_">m</span><span class="hljs-title function_">avka_extension_sum</span>(a: <span class="hljs-type">double</span>, b: <span class="hljs-type">double</span>): <span class="hljs-type">double</span>;
 
-<span class="hljs-keyword">дія</span> <span class="hljs-title function_">н</span><span class="hljs-title function_">ативна_дія_сума</span>(обʼєкт_нативної_дії: <span class="hljs-type">адреса</span>&lt;РМв1::Обʼєкт&gt;, Р: <span class="hljs-type">адреса</span>&lt;РМв1::Розширення&gt;, обʼєкт_я: <span class="hljs-type">адреса</span>&lt;РМв1::Обʼєкт&gt;, кількість_аргументів: <span class="hljs-type">позитивне</span>, аргументи: <span class="hljs-type">адреса</span>&lt;<span class="hljs-type">адреса</span>&lt;РМв1::Обʼєкт&gt;&gt;, іменовані_аргументи: <span class="hljs-type">адреса</span>, дані: <span class="hljs-type">адреса</span>): РМв1::Результат {
-  <span class="hljs-keyword">якщо</span> кількість_аргументів &gt; 1 {
-    <span class="hljs-keyword">ціль</span> обʼєкт_аргумента_1 = аргументи[0];
-    <span class="hljs-keyword">ціль</span> обʼєкт_аргумента_2 = аргументи[1];
-    <span class="hljs-keyword">ціль</span> а = РМв1::<span class="hljs-built_in">о</span><span class="hljs-built_in">тримати_значення_числа</span>(обʼєкт_аргумента_1, Р);
-    <span class="hljs-keyword">ціль</span> б = РМв1::<span class="hljs-built_in">о</span><span class="hljs-built_in">тримати_значення_числа</span>(обʼєкт_аргумента_2, Р);
-    <span class="hljs-keyword">ціль</span> результат = <span class="hljs-built_in">m</span><span class="hljs-built_in">avka_extension_sum</span>(а, б);
-    <span class="hljs-keyword">вернути</span> РМв1::<span class="hljs-built_in">у</span><span class="hljs-built_in">спіх</span>(Р, РМв1::<span class="hljs-built_in">с</span><span class="hljs-built_in">творити_число</span>(Р, результат));
+<span class="hljs-keyword">дія</span> <span class="hljs-title function_">н</span><span class="hljs-title function_">ативна_дія_сума</span>(обʼєкт_нативної_дії: <span class="hljs-type">адреса</span>&lt;РМв1::Обʼєкт&gt;, Р: <span class="hljs-type">адреса</span>&lt;РМв1::Розширення&gt;, обʼєкт_я: <span class="hljs-type">адреса</span>&lt;РМв1::Обʼєкт&gt;, кількість_аргументів: <span class="hljs-type">позитивне</span>, аргументи: <span class="hljs-type">адреса</span>&lt;<span class="hljs-type">адреса</span>&lt;РМв1::Обʼєкт&gt;&gt;, іменовані_аргументи: <span class="hljs-type">адреса</span>&lt;РМв1::ІменованіАргументи&gt;, дані: <span class="hljs-type">адреса</span>): РМв1::Результат {
+  <span class="hljs-keyword">змінна</span> <span class="hljs-keyword">ціль</span> знайдено_аргумент_а = <span class="hljs-literal">ні</span>;
+  <span class="hljs-keyword">змінна</span> <span class="hljs-keyword">ціль</span> аргумент_а: <span class="hljs-type">адреса</span>&lt;РМв1::Обʼєкт&gt; = <span class="hljs-literal">пусто</span>;
+  <span class="hljs-keyword">змінна</span> <span class="hljs-keyword">ціль</span> знайдено_аргумент_б = <span class="hljs-literal">ні</span>;
+  <span class="hljs-keyword">змінна</span> <span class="hljs-keyword">ціль</span> аргумент_б: <span class="hljs-type">адреса</span>&lt;РМв1::Обʼєкт&gt; = <span class="hljs-literal">пусто</span>;
+  <span class="hljs-keyword">якщо</span> іменовані_аргументи != <span class="hljs-literal">пусто</span> {
+    знайдено_аргумент_а = РМв1::<span class="hljs-built_in">з</span><span class="hljs-built_in">найти_іменований_аргумент</span>(Р, іменовані_аргументи, РМв1::<span class="hljs-built_in">н</span><span class="hljs-built_in">азва_з_Ю8</span>(Р, ю8<span class="hljs-string">&quot;а&quot;</span>), аргумент_а::<span class="hljs-type">адреса</span>);
+    знайдено_аргумент_б = РМв1::<span class="hljs-built_in">з</span><span class="hljs-built_in">найти_іменований_аргумент</span>(Р, іменовані_аргументи, РМв1::<span class="hljs-built_in">н</span><span class="hljs-built_in">азва_з_Ю8</span>(Р, ю8<span class="hljs-string">&quot;б&quot;</span>), аргумент_б::<span class="hljs-type">адреса</span>);
   }
-  <span class="hljs-keyword">вернути</span> РМв1::<span class="hljs-built_in">п</span><span class="hljs-built_in">адіння</span>(Р, РМв1::<span class="hljs-built_in">с</span><span class="hljs-built_in">творити_текст_з_Ю8</span>(Р, ю8<span class="hljs-string">&quot;Недостатньо аргументів&quot;</span>));
+  <span class="hljs-keyword">якщо</span> кількість_аргументів &gt; 0 {
+    <span class="hljs-keyword">якщо</span> знайдено_аргумент_а == <span class="hljs-literal">ні</span> {
+      знайдено_аргумент_а = <span class="hljs-literal">так</span>;
+      аргумент_а = аргументи[0];
+    }
+    <span class="hljs-keyword">якщо</span> кількість_аргументів &gt; 1 {
+      <span class="hljs-keyword">якщо</span> знайдено_аргумент_б == <span class="hljs-literal">ні</span> {
+        знайдено_аргумент_б = <span class="hljs-literal">так</span>;
+        аргумент_б = аргументи[1];
+      }
+    }
+  }
+  <span class="hljs-keyword">якщо</span> знайдено_аргумент_а == <span class="hljs-literal">ні</span> {
+    <span class="hljs-keyword">вернути</span> РМв1::<span class="hljs-built_in">п</span><span class="hljs-built_in">адіння</span>(Р, РМв1::<span class="hljs-built_in">с</span><span class="hljs-built_in">творити_текст_з_Ю8</span>(Р, ю8<span class="hljs-string">&quot;Пропущено аргумент \&quot;</span>а\<span class="hljs-string">&quot;&quot;</span>));
+  }
+  <span class="hljs-keyword">якщо</span> знайдено_аргумент_б == <span class="hljs-literal">ні</span> {
+    <span class="hljs-keyword">вернути</span> РМв1::<span class="hljs-built_in">п</span><span class="hljs-built_in">адіння</span>(Р, РМв1::<span class="hljs-built_in">с</span><span class="hljs-built_in">творити_текст_з_Ю8</span>(Р, ю8<span class="hljs-string">&quot;Пропущено аргумент \&quot;</span>б\<span class="hljs-string">&quot;&quot;</span>));
+  }
+  <span class="hljs-keyword">якщо</span> РМв1::<span class="hljs-built_in">п</span><span class="hljs-built_in">еревірити_чи_обʼєкт_є_числом</span>(аргумент_а, Р) == <span class="hljs-literal">ні</span> {
+    <span class="hljs-keyword">вернути</span> РМв1::<span class="hljs-built_in">п</span><span class="hljs-built_in">адіння</span>(Р, РМв1::<span class="hljs-built_in">с</span><span class="hljs-built_in">творити_текст_з_Ю8</span>(Р, ю8<span class="hljs-string">&quot;Аргумент \&quot;</span>а\<span class="hljs-string">&quot; має бути числом&quot;</span>));
+  }
+  <span class="hljs-keyword">якщо</span> РМв1::<span class="hljs-built_in">п</span><span class="hljs-built_in">еревірити_чи_обʼєкт_є_числом</span>(аргумент_б, Р) == <span class="hljs-literal">ні</span> {
+    <span class="hljs-keyword">вернути</span> РМв1::<span class="hljs-built_in">п</span><span class="hljs-built_in">адіння</span>(Р, РМв1::<span class="hljs-built_in">с</span><span class="hljs-built_in">творити_текст_з_Ю8</span>(Р, ю8<span class="hljs-string">&quot;Аргумент \&quot;</span>б\<span class="hljs-string">&quot; має бути числом&quot;</span>));
+  }
+  <span class="hljs-keyword">ціль</span> а = РМв1::<span class="hljs-built_in">о</span><span class="hljs-built_in">тримати_значення_числа</span>(аргумент_а, Р);
+  <span class="hljs-keyword">ціль</span> б = РМв1::<span class="hljs-built_in">о</span><span class="hljs-built_in">тримати_значення_числа</span>(аргумент_б, Р);
+  <span class="hljs-keyword">ціль</span> результат = <span class="hljs-built_in">m</span><span class="hljs-built_in">avka_extension_sum</span>(а, б);
+  <span class="hljs-keyword">вернути</span> РМв1::<span class="hljs-built_in">у</span><span class="hljs-built_in">спіх</span>(Р, РМв1::<span class="hljs-built_in">с</span><span class="hljs-built_in">творити_число</span>(Р, результат));
 }
 
 <span class="hljs-keyword">зовнішня</span> <span class="hljs-keyword">дія</span> <span class="hljs-title function_">з</span><span class="hljs-title function_">авантажити_РМв1</span>(Р: <span class="hljs-type">адреса</span>&lt;РМв1::Розширення&gt;): РМв1::Результат {
@@ -163,7 +190,7 @@
 <p>Компілюємо shared object <code>розширення_мавки_сума.so</code> за допомогою наступних команд:</p>
 <pre><div class="XDocsCodeWrapper"><code class="hljs">ціль розширення_мавки_сума.ll скомпілювати розширення_мавки_сума.ц
 </code></div></pre>
-<pre><div class="XDocsCodeWrapper"><code class="hljs">clang++ -shared -o розширення_мавки_сума.so розширення_мавки_сума.ll sum_mavka_extension.cpp
+<pre><div class="XDocsCodeWrapper"><code class="hljs">clang++ -shared -fPIC -o розширення_мавки_сума.so розширення_мавки_сума.ll sum_mavka_extension.cpp
 </code></div></pre>
 <p>Створюємо модуль <subject>Мавки</subject> <code>тест_розширення_сума.м</code>:</p>
 <pre><div class="XDocsCodeWrapper"><code class="hljs"><span class="hljs-keyword">взяти</span> <span class="hljs-keyword">біб</span> мавка
@@ -178,7 +205,7 @@
 <p>Отож, як видно, виконувати нативний код на <subject>Цілі</subject> чи C++ з <subject>Мавки</subject> дуже просто.
 Головне розібратись з файлом <code>РМв1.в</code> та розуміти <subject>Ціль</subject>.</p>
 <hr>
-<p><em>Написав <a href="https://xn--90afr.xn--j1amh">Давид</a>. Опубліковано 01.12.2024.</em></p>
+<p><em>Написав <a href="https://xn--90afr.xn--j1amh">Давид</a>. Опубліковано 01.12.2024. Оновлено 07.12.2024.</em></p>
 
     <div class="XDocsPageContentComments" data-comments-repo="mavka-ukr/chasopys" data-comments-repo-id="R_kgDONWmpCw" data-comments-category="часопис.мавка.укр" data-comments-category-id="DIC_kwDONWmpC84Ck4Qd"></div>
     <div class="XDocsPageContentBcFw">
