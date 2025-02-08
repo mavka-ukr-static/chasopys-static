@@ -181,8 +181,8 @@
   <span class="hljs-keyword">змінна</span> <span class="hljs-keyword">ціль</span> знайдено_аргумент_б = <span class="hljs-literal">ні</span>;
   <span class="hljs-keyword">змінна</span> <span class="hljs-keyword">ціль</span> аргумент_б: <span class="hljs-type">адреса</span>&lt;РМв1::Обʼєкт&gt; = <span class="hljs-literal">пусто</span>;
   <span class="hljs-keyword">якщо</span> іменовані_аргументи != <span class="hljs-literal">пусто</span> {
-    знайдено_аргумент_а = РМв1::<span class="hljs-built_in">з</span><span class="hljs-built_in">найти_іменований_аргумент</span>(Р, іменовані_аргументи, РМв1::<span class="hljs-built_in">н</span><span class="hljs-built_in">азва_з_ю8</span>(Р, ю8<span class="hljs-string">&quot;а&quot;</span>), аргумент_а::<span class="hljs-type">адреса</span>);
-    знайдено_аргумент_б = РМв1::<span class="hljs-built_in">з</span><span class="hljs-built_in">найти_іменований_аргумент</span>(Р, іменовані_аргументи, РМв1::<span class="hljs-built_in">н</span><span class="hljs-built_in">азва_з_ю8</span>(Р, ю8<span class="hljs-string">&quot;б&quot;</span>), аргумент_б::<span class="hljs-type">адреса</span>);
+    знайдено_аргумент_а = РМв1::<span class="hljs-built_in">з</span><span class="hljs-built_in">найти_іменований_аргумент</span>(Р, іменовані_аргументи, РМв1::<span class="hljs-built_in">н</span><span class="hljs-built_in">азва</span>(Р, <span class="hljs-string">&quot;а&quot;</span>), аргумент_а::<span class="hljs-type">адреса</span>);
+    знайдено_аргумент_б = РМв1::<span class="hljs-built_in">з</span><span class="hljs-built_in">найти_іменований_аргумент</span>(Р, іменовані_аргументи, РМв1::<span class="hljs-built_in">н</span><span class="hljs-built_in">азва</span>(Р, <span class="hljs-string">&quot;б&quot;</span>), аргумент_б::<span class="hljs-type">адреса</span>);
   }
   <span class="hljs-keyword">якщо</span> кількість_аргументів &gt; 0 {
     <span class="hljs-keyword">якщо</span> знайдено_аргумент_а == <span class="hljs-literal">ні</span> {
@@ -215,7 +215,7 @@
 }
 
 <span class="hljs-keyword">зовнішня</span> <span class="hljs-keyword">дія</span> <span class="hljs-title function_">з</span><span class="hljs-title function_">авантажити_РМв1</span>(Р: <span class="hljs-type">адреса</span>&lt;РМв1::Розширення&gt;): РМв1::Результат {
-  <span class="hljs-keyword">ціль</span> обʼєкт_нативної_дії_сума = РМв1::<span class="hljs-built_in">с</span><span class="hljs-built_in">творити_нативну_дію</span>(Р, РМв1::<span class="hljs-built_in">н</span><span class="hljs-built_in">азва_з_ю8</span>(Р, ю8<span class="hljs-string">&quot;сума&quot;</span>), нативна_дія_сума, <span class="hljs-literal">пусто</span>, <span class="hljs-literal">пусто</span>);
+  <span class="hljs-keyword">ціль</span> обʼєкт_нативної_дії_сума = РМв1::<span class="hljs-built_in">с</span><span class="hljs-built_in">творити_нативну_дію</span>(Р, РМв1::<span class="hljs-built_in">н</span><span class="hljs-built_in">азва</span>(Р, <span class="hljs-string">&quot;сума&quot;</span>), нативна_дія_сума, <span class="hljs-literal">пусто</span>, <span class="hljs-literal">пусто</span>);
   <span class="hljs-keyword">вернути</span> РМв1::<span class="hljs-built_in">у</span><span class="hljs-built_in">спіх</span>(Р, обʼєкт_нативної_дії_сума);
 }
 </code></div></pre>
