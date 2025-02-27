@@ -54,11 +54,11 @@
   data-navigation-submenu-shown="false"
 >
   <a
-  href="./2025-02-14-оновлення-семантики-мавки.html"
+  href="./2025-02-14-оновлення-теорії-мавки.html"
   class="XDocsPageNavigationSubmenuItem "
-  data-navigation-item="Оновлення семантики Мавки"
+  data-navigation-item="Оновлення Теорії Мавки"
 >
-  Оновлення семантики Мавки
+  Оновлення Теорії Мавки
 </a>
 <a
   href="./2025-02-14-переїзд-вебсервісів-мавки.html"
@@ -182,7 +182,7 @@
 На момент написання
 цього допису в мене
 версія <subject><a href="https://xn--80ae5bu9f.xn--80aaf6ah.xn--j1amh/%D0%B2%D0%B8%D0%BF%D1%83%D1%81%D0%BA-%D0%BC%D0%B0%D0%B2%D0%BA%D0%B8-0.113.0.html">Мавки 0.113.0</a></subject>,
-версія <subject><a href="https://xn--k1avt2b.xn--j1amh">Цілі 0.33.0</a></subject>
+версія <subject><a href="https://xn--k1avt2b.xn--j1amh">Цілі 0.35.0</a></subject>
 та Clang++ 18.</p>
 <p>Також треба завантажити файл <code>РМв1.в</code>
 (наприклад
@@ -212,8 +212,8 @@
   <span class="hljs-keyword">змінна</span> <span class="hljs-keyword">ціль</span> знайдено_аргумент_б = <span class="hljs-literal">ні</span>;
   <span class="hljs-keyword">змінна</span> <span class="hljs-keyword">ціль</span> аргумент_б: <span class="hljs-type">адреса</span>&lt;РМв1::Предмет&gt; = <span class="hljs-literal">пусто</span>;
   <span class="hljs-keyword">якщо</span> іменовані_аргументи != <span class="hljs-literal">пусто</span> {
-    знайдено_аргумент_а = РМв1::<span class="hljs-built_in">з</span><span class="hljs-built_in">найти_іменований_аргумент</span>(Р, іменовані_аргументи, РМв1::<span class="hljs-built_in">н</span><span class="hljs-built_in">азва</span>(Р, <span class="hljs-string">&quot;а&quot;</span>), аргумент_а::<span class="hljs-type">адреса</span>);
-    знайдено_аргумент_б = РМв1::<span class="hljs-built_in">з</span><span class="hljs-built_in">найти_іменований_аргумент</span>(Р, іменовані_аргументи, РМв1::<span class="hljs-built_in">н</span><span class="hljs-built_in">азва</span>(Р, <span class="hljs-string">&quot;б&quot;</span>), аргумент_б::<span class="hljs-type">адреса</span>);
+    знайдено_аргумент_а = РМв1::<span class="hljs-built_in">з</span><span class="hljs-built_in">найти_іменований_аргумент</span>(Р, іменовані_аргументи, РМв1::<span class="hljs-built_in">н</span><span class="hljs-built_in">азва_з_т8</span>(Р, <span class="hljs-string">&quot;а&quot;</span>), аргумент_а::<span class="hljs-type">адреса</span>);
+    знайдено_аргумент_б = РМв1::<span class="hljs-built_in">з</span><span class="hljs-built_in">найти_іменований_аргумент</span>(Р, іменовані_аргументи, РМв1::<span class="hljs-built_in">н</span><span class="hljs-built_in">азва_з_т8</span>(Р, <span class="hljs-string">&quot;б&quot;</span>), аргумент_б::<span class="hljs-type">адреса</span>);
   }
   <span class="hljs-keyword">якщо</span> кількість_аргументів &gt; 0 {
     <span class="hljs-keyword">якщо</span> знайдено_аргумент_а == <span class="hljs-literal">ні</span> {
@@ -246,7 +246,7 @@
 }
 
 <span class="hljs-keyword">зовнішня</span> <span class="hljs-keyword">дія</span> <span class="hljs-title function_">з</span><span class="hljs-title function_">авантажити_РМв1</span>(Р: <span class="hljs-type">адреса</span>&lt;РМв1::Розширення&gt;): РМв1::Результат {
-  <span class="hljs-keyword">ціль</span> предмет_нативної_дії_сума = РМв1::<span class="hljs-built_in">с</span><span class="hljs-built_in">творити_нативну_дію</span>(Р, РМв1::<span class="hljs-built_in">н</span><span class="hljs-built_in">азва</span>(Р, <span class="hljs-string">&quot;сума&quot;</span>), нативна_дія_сума, <span class="hljs-literal">пусто</span>, <span class="hljs-literal">пусто</span>);
+  <span class="hljs-keyword">ціль</span> предмет_нативної_дії_сума = РМв1::<span class="hljs-built_in">с</span><span class="hljs-built_in">творити_нативну_дію</span>(Р, РМв1::<span class="hljs-built_in">н</span><span class="hljs-built_in">азва_з_т8</span>(Р, <span class="hljs-string">&quot;сума&quot;</span>), нативна_дія_сума, <span class="hljs-literal">пусто</span>, <span class="hljs-literal">пусто</span>);
   <span class="hljs-keyword">вернути</span> РМв1::<span class="hljs-built_in">у</span><span class="hljs-built_in">спіх</span>(Р, предмет_нативної_дії_сума);
 }
 </code></div></pre>
@@ -268,7 +268,7 @@
 <p>Отож, як видно, виконувати нативний код на <subject>Цілі</subject> чи C++ з <subject>Мавки</subject> дуже просто.
 Головне розібратись з файлом <code>РМв1.в</code> та розуміти <subject>Ціль</subject>.</p>
 <hr>
-<p><em>Написав <a href="https://xn--90afr.xn--j1amh">Давид</a>. Опубліковано 01.12.2024. Оновлено 15.02.2025.</em></p>
+<p><em>Написав <a href="https://xn--90afr.xn--j1amh">Давид</a>. Опубліковано 01.12.2024. Оновлено 27.02.2025.</em></p>
 
     <div class="XDocsPageContentComments" data-comments-repo="mavka-ukr/chasopys" data-comments-repo-id="R_kgDONWmpCw" data-comments-category="часопис.мавка.укр" data-comments-category-id="DIC_kwDONWmpC84Ck4Qd"></div>
     <div class="XDocsPageContentBcFw">
