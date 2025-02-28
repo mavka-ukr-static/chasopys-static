@@ -7,10 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="xdocs-url-prefix" content="./">
 
-  <meta name="description" content="Нарешті! Мавка тепер має свій власний рукописний розбирач,
-написаний мовою Ціль.">
+  <meta name="description" content="Як збудувати Мавку на Linux з джерельних файлів? Читайте далі.">
 
-  <title>Новий розбирач Мавки | Часопис Мавки</title>
+  <title>Будуємо Мавку на GNU/Linux | Часопис Мавки</title>
 
   <link rel="icon" type="image/png" href="./ресурси/тема/часопис.лого.png" />
   <link rel="icon" sizes="any" type="image/svg+xml" href="./ресурси/тема/часопис.лого.svg">
@@ -62,14 +61,14 @@
 </a>
 <a
   href="./2025-02-28-будуємо-мавку-на-linux.html"
-  class="XDocsPageNavigationSubmenuItem "
+  class="XDocsPageNavigationSubmenuItem active"
   data-navigation-item="Будуємо Мавку на GNU/Linux"
 >
   Будуємо Мавку на GNU/Linux
 </a>
 <a
   href="./2025-02-27-новий-розбирач-мавки.html"
-  class="XDocsPageNavigationSubmenuItem active"
+  class="XDocsPageNavigationSubmenuItem "
   data-navigation-item="Новий розбирач Мавки"
 >
   Новий розбирач Мавки
@@ -194,21 +193,57 @@
   </button>
   <div class="XDocsPageContent">
     
-    <h1>Новий розбирач Мавки</h1>
-<p>Нарешті! <subject>Мавка</subject> тепер має свій власний рукописний розбирач,
-написаний мовою <subject>Ціль</subject>.</p>
-<p>ANTLR4 була останньою <em><strong>жирною</strong></em> залежністю <subject>Мавки</subject> від C/C++. Позбувшись її, <subject>
-Мавка</subject> тепер дуже
-близько до першої бета-версії 1.0.0.</p>
-<p>До речі, новий розбирач працює набагато швидше за той, що був на ANTLR4. У мене тести виконуються
-<strong>в 10 разів швидше</strong> - з ~1000 мс впало до ~100 мс...</p>
+    <h1>Будуємо Мавку на GNU/Linux</h1>
+<p>Як збудувати <subject>Мавку</subject> на Linux з джерельних файлів? Читайте далі.</p>
+<h2>Встановлення залежностей</h2>
+<p>Нам будуть потрібні <strong>Ціль</strong>, <strong>Clang</strong> та <strong>Git</strong>.</p>
+<p>Встановлення <strong>Clang</strong> та <strong>Git</strong> на <strong>Ubuntu Linux</strong>:</p>
+<pre><div class="XDocsCodeWrapper"><code class="hljs">sudo apt install git clang
+</code></div></pre>
+<p>Встановлення <strong>Clang</strong> та <strong>Git</strong> на <strong>Arch Linux</strong>:</p>
+<pre><div class="XDocsCodeWrapper"><code class="hljs">sudo pacman -S git clang
+</code></div></pre>
+<p>Після встановлення <strong>Clang</strong> та <strong>Git</strong> треба завантажити та встановити <strong>Ціль</strong>.</p>
+<p>В <a href="https://github.com/mavka-ukr/mavka">репозиторії <subject>Мавки</subject></a> треба дізнатись необхідну версію
+<subject>Цілі</subject> та завантажити її з <a href="https://xn--80ae5bu9f.xn--k1avt2b.xn--j1amh">Архіву Цілі</a>.</p>
+<p>Після завантаження, архів необхідно розпакувати та скопіювати звідти виконуваний файл <code>ціль</code> в теку <code>/usr/local/bin</code></p>
+<p>Далі треба перевірити чи <subject>Ціль</subject> встановлено. Для цього достатньо у вашому терміналі прописати команду
+<code>ціль</code>: якщо виведе
+версію і додаткову інформацію - все добре.</p>
+<h2>Будування</h2>
+<p>Клонуємо репозиторій <subject>Мавки</subject>:</p>
+<pre><div class="XDocsCodeWrapper"><code class="hljs">git clone https://github.com/mavka-ukr/mavka --depth=1
+</code></div></pre>
+<p>Відкриваємо клоновану теку:</p>
+<pre><div class="XDocsCodeWrapper"><code class="hljs">cd mavka
+</code></div></pre>
+<p>Компілюємо файли <subject>Цілі</subject>:</p>
+<pre><div class="XDocsCodeWrapper"><code class="hljs">TSIL=&quot;ціль&quot; sh external/scripts/prepare.sh linux-x86_64
+</code></div></pre>
+<p>Переходимо в підготовлену теку:</p>
+<pre><div class="XDocsCodeWrapper"><code class="hljs">cd build/linux-x86_64
+</code></div></pre>
+<p>Будуємо виконуваний файл:</p>
+<pre><div class="XDocsCodeWrapper"><code class="hljs">sh build.sh
+</code></div></pre>
+<p>Пробуємо:</p>
+<pre><div class="XDocsCodeWrapper"><code class="hljs">./out/мавка
+</code></div></pre>
+<p>Для зручності, <subject>Мавку</subject> можна встановити глобально:</p>
+<pre><div class="XDocsCodeWrapper"><code class="hljs">sudo cp ./out/мавка /usr/local/bin
+</code></div></pre>
 <hr>
-<p><em>Написав <a href="https://xn--90afr.xn--j1amh">Давид</a>. Опубліковано 27.02.2025.</em></p>
+<p>Читайте також:</p>
+<ul>
+<li><a href="./2025-02-28-%D0%B1%D1%83%D0%B4%D1%83%D1%94%D0%BC%D0%BE-%D0%BC%D0%B0%D0%B2%D0%BA%D1%83-%D0%BD%D0%B0-linux-%D1%88%D0%B2%D0%B8%D0%B4%D0%BA%D0%B8%D0%B9-%D1%81%D0%BF%D0%BE%D1%81%D1%96%D0%B1.html">Як просто і швидко збудувати <subject>Мавку</subject> на Linux?</a></li>
+</ul>
+<hr>
+<p><em>Написав <a href="https://xn--90afr.xn--j1amh">Давид</a>. Опубліковано 28.02.2025.</em></p>
 
     <div class="XDocsPageContentComments" data-comments-repo="mavka-ukr/chasopys" data-comments-repo-id="R_kgDONWmpCw" data-comments-category="часопис.мавка.укр" data-comments-category-id="DIC_kwDONWmpC84Ck4Qd"></div>
     <div class="XDocsPageContentBcFw">
-      <a data-is-prev="true" href="./2025-02-28-будуємо-мавку-на-linux.html">Відступ</a>
-      <a data-is-next="true" href="./2025-02-14-оновлення-теорії-мавки.html">Наступ</a >
+      <a data-is-prev="true" href="./2025-02-28-будуємо-мавку-на-linux-швидкий-спосіб.html">Відступ</a>
+      <a data-is-next="true" href="./2025-02-27-новий-розбирач-мавки.html">Наступ</a >
     </div>
   </div>
 </div>
